@@ -1,8 +1,9 @@
 <?php
+/*
     $persona = array(
         (object) [
             'foto' => 'avataaars.svg',
-            'descricao' => 'Start Bootstrap',
+            'descricao' => 'cc',
             'descricao2' => 'Graphic Artist - Web Designer - Illustrator'
         ]
     );
@@ -48,5 +49,5 @@
         echo "Olá {$nome}, seu email é {$email}";
     };
    
-
+*/
 ?>

@@ -1,4 +1,5 @@
-<?php include('./dados.php'); ?>
+<?php include_once('./dados.php'); ?>
+<?php include_once('./prompt.crud.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -36,7 +37,7 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <?php foreach ($persona as $masthead): ?>
+        <?php foreach (listaPersona() as $masthead): ?>
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
@@ -68,7 +69,7 @@
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <!-- Portfolio Item 1-->
-                    <?php foreach ($portfolios as $indice => $portfolio) : ?>
+                    <?php foreach (listaPortfolios() as $indice => $portfolio) : ?>
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal<?= ($indice + 1) ?>">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
