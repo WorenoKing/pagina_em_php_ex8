@@ -1,5 +1,4 @@
 <?php 
-    include_once('./dados.php'); 
     include_once('./prompt.crud.php');
 ?>
 <!DOCTYPE html>
