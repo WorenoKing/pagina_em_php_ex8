@@ -1,5 +1,7 @@
-<?php include_once('./dados.php'); ?>
-<?php include_once('./prompt.crud.php'); ?>
+<?php 
+    include_once('./dados.php'); 
+    include_once('./prompt.crud.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -217,7 +219,7 @@
         </div>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
-        <?php foreach ($portfolios as $indice => $portfolio):?>
+        <?php foreach (listaPortfolios() as $indice => $portfolio):?>
         <div class="portfolio-modal modal fade" id="portfolioModal<?= ($indice + 1) ?>" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">

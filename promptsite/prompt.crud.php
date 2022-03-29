@@ -24,7 +24,7 @@ require_once("conexao.php");
         $listaPortfolios = array();
         while($portfolios = mysqli_fetch_object($result))
         {
-            array_push($listaPersona, $portfolios);
+            array_push($listaPortfolios, $portfolios);
         }
         mysqli_close($link);
         return $listaPortfolios;
