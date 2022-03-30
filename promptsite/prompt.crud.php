@@ -1,19 +1,21 @@
 <?php 
 
-require_once("conexao.php");
+    require_once("conexao.php");
 
-    function listaPersona()
+    function cadastrarPortfolios($imagem, $titulo, $comentario) 
     {
         $link = getConnection();
-        $sql = "select * from persona";
+
+        $sql = "insert into portfolios (imagem, titulo, comentario) values ('{$imagem}', '{$titulo}', '{$comentario}')";
+        
         $result = mysqli_query($link, $sql);
-        $listaPersona = array();
-        while($persona = mysqli_fetch_object($result))
-        {
-            array_push($listaPersona, $persona);
-        }
+
         mysqli_close($link);
-        return $listaPersona;
+
+        if($result)
+            return true; # retorno quando ocorrer sucesso na inserção
+
+        return false; # retorno padrão(default)
     }
 
     function listaPortfolios()
@@ -28,5 +30,19 @@ require_once("conexao.php");
         }
         mysqli_close($link);
         return $listaPortfolios;
+    }
+
+    function listaPersona()
+    {
+        $link = getConnection();
+        $sql = "select * from persona";
+        $result = mysqli_query($link, $sql);
+        $listaPersona = array();
+        while($persona = mysqli_fetch_object($result))
+        {
+            array_push($listaPersona, $persona);
+        }
+        mysqli_close($link);
+        return $listaPersona;
     }
 ?>

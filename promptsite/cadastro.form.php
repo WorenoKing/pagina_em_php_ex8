@@ -2,13 +2,13 @@
     include_once('./prompt.crud.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Freelancer - Start Bootstrap Theme</title>
+        <title>Formulário de cadastro</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -42,30 +42,43 @@
         </header>
         <?php  endforeach; ?>
         <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
+        <section class="page-section" id="servicos">
             <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Serviços</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <?php if($_GET) : ?>
+                    <h3 class="section-subheading text-danger"><strong>Ocoreu um erro ao tentar cadastrar no banco.</strong></h3>
+                    <?php endif; ?>
                 </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <?php foreach (listaPortfolios() as $indice => $portfolio) : ?>
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal<?= ($indice + 1) ?>">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <form id="servicosForm" data-sb-form-api-token="API_TOKEN" method="POST" action="portfolios.registrar.php">
+                    <div class="row align-items-center mb-5 offset-4">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Image input-->
+                                <input class="form-control" id="imagem" name="inputImagem" type="text" placeholder="Informe a imagem *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="imagem:required">A imagem é requirida.</div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/<?= $portfolio->imagem ?>" alt="..." />
+                            <div class="form-group">
+                                <!-- Title input-->
+                                <input class="form-control" id="title" name="inputTitulo" type="text" placeholder="Informe o titulo *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="title:required">O titulo é requirida.</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Description input-->
+                                <input class="form-control" id="description" name="inputComentario" type="text" placeholder="Informe a descrição *" data-sb-validations="required"/>
+                                <div class="invalid-feedback" data-sb-feedback="description:required">A descrição é requirida.</div>
+                            </div>
                         </div>
                     </div>
-                    <?php endforeach; ?>
-                </div>
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                        </div>
+                    </div>
+                    <!-- Submit Button-->
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Registrar</button></div>
+                </form>
             </div>
         </section>
         <!-- About Section-->
