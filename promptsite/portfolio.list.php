@@ -75,7 +75,7 @@
                     <h3 class="section-subheading text-danger"><strong>Ocoreu um erro ao tentar cadastrar no banco.</strong></h3>
                     <?php endif; ?>
                 </div>
-                <table class="table table-stripped" style="color: white;">
+                <table class="table table-stripped" style="color: black;">
                     <thead>
                         <th>#</th>
                         <th>Imagem</th>
@@ -84,15 +84,15 @@
                         <th>Gerir</th>
                     </thead>
                     <tbody>
-                        <?php foreach (listaPortfolios() as $servico) : ?>
+                        <?php foreach (listaPortfolios() as $portfolios) : ?>
                         <tr>
                             <td><?= $portfolios->id ?></td>
                             <td><?= $portfolios->imagem ?></td>
                             <td><?= $portfolios->titulo ?></td>
-                            <td><?= $portfolios->descricao ?></td>
+                            <td><?= $portfolios->comentario ?></td>
                             <td>
-                                <a href="portfolios.edit.php?id=<?= $servico->id ?>"><i class="fa-solid fa-pencil"></i></a>&nbsp;
-                                <a onclick="return confirm('Deseja realmente remover este item?')" href="portfolios.delete.php?id=<?= $servico->id ?>"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="portfolios.edit.php?id=<?= $portfolios->id ?>"><i class="fa-solid fa-pencil"></i></a>&nbsp;
+                                <a onclick="return confirm('Deseja realmente remover este item?')" href="portfolios.delete.php?id=<?= $portfolios->id ?>"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

@@ -51,7 +51,7 @@
                     <h3 class="section-subheading text-danger"><strong>Ocoreu um erro ao tentar cadastrar no banco.</strong></h3>
                     <?php endif; ?>
                 </div>
-                <form id="servicosForm" data-sb-form-api-token="API_TOKEN" method="POST" action="portfolios.registrar.php">
+                <form id="servicosForm" data-sb-form-api-token="API_TOKEN" method="POST" action="portfolios.register.php">
                     <div class="row align-items-center mb-5 offset-4">
                         <div class="col-md-6">
                             <div class="form-group">

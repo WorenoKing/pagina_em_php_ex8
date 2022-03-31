@@ -7,14 +7,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#index.php">Home</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.php">Home</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownManager" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manager</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownManager">
-                                <li><a href="portfolio.form.php" class="dropdown-item">Cadastrar</a></li>
+                                <li><a href="cadastro.form.php" class="dropdown-item">Cadastrar</a></li>
                                 <li><a href="portfolio.list.php" class="dropdown-item">Listar</a></li>
                             </ul>
                         </li>
