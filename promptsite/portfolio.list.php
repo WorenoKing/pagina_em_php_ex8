@@ -71,9 +71,6 @@
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Serviços</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                    <?php if($_GET) : ?>
-                    <h3 class="section-subheading text-danger"><strong>Ocoreu um erro ao tentar cadastrar no banco.</strong></h3>
-                    <?php endif; ?>
                 </div>
                 <table class="table table-stripped" style="color: black;">
                     <thead>
@@ -91,12 +88,23 @@
                             <td><?= $portfolios->titulo ?></td>
                             <td><?= $portfolios->comentario ?></td>
                             <td>
-                                <a href="portfolios.edit.php?id=<?= $portfolios->id ?>"><i class="fa-solid fa-pencil"></i></a>&nbsp;
-                                <a onclick="return confirm('Deseja realmente remover este item?')" href="portfolios.delete.php?id=<?= $portfolios->id ?>"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="portfolio.edit.php?id=<?= $portfolios->id ?>"><i class="fa-solid fa-pencil"></i></a>&nbsp;
+                                <a onclick="return confirm('Deseja realmente remover este item?')" href="portfolio.delet.php?id=<?= $portfolios->id ?>"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
+                    <?php if($_GET) : ?>
+                        <tfoot>
+                            <tr>
+                                <?php if(isset($_GET['error'])): ?>
+                                    <td colspan="5"><h3 style="font-size: small;" class="text-danger"><strong>Ocoreu um erro ao tentar cadastrar/apagar no banco.</strong></h3></td>
+                                <?php elseif(isset($_GET['success'])): ?>
+                                    <td colspan="5"><h3 style="font-size: small;" class="text-success"><strong>Gravado/Apagado com sucesso do banco.</strong></h3></td>
+                                <?php endif; ?>
+                            </tr>
+                        </tfoot>
+                    <?php endif; ?>
                 </table>
             </div>
         </section>

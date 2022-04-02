@@ -32,6 +32,51 @@
         return $listaPortfolios;
     }
 
+    function apagarPortfolio($id) 
+    {
+        $link = getConnection();
+
+        $sql = "delete from portfolios where id = {$id}";
+        
+        $result = mysqli_query($link, $sql);
+
+        mysqli_close($link);
+
+        if($result)
+            return true;
+
+        return false;
+    }
+
+    function localizaPortfolioPeloID($id)
+    {
+        $link = getConnection();
+
+        $sql = "select * from portfolios where id = {$id}";
+
+        $portfolio = mysqli_fetch_object(mysqli_query($link, $sql));
+
+        mysqli_close($link);
+
+        return $portfolio;
+    }
+
+    function atualizarPortfolios($id, $imagem, $titulo, $comentario)
+    {
+        $link = getConnection();
+
+        $sql = "update portfolios set imagem = '{$imagem}', titulo = '{$titulo}', comentario = '{$comentario}' where id = {$id}";
+
+        $result = mysqli_query($link, $sql);
+
+        mysqli_close($link);
+
+        if($result)
+            return true;
+
+        return false;
+    }
+
     function listaPersona()
     {
         $link = getConnection();
