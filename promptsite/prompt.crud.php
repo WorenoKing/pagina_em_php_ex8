@@ -2,47 +2,56 @@
 
     require_once("conexao.php");
 
-    function cadastrarPortfolios($imagem, $titulo, $comentario) 
+    function cadastrarPortfolio($imagem, $titulo, $comentario) 
     {
-        $link = getConnection();
+        $con = getConnection();
 
-        $sql = "insert into portfolios (imagem, titulo, comentario) values ('{$imagem}', '{$titulo}', '{$comentario}')";
-        
-        $result = mysqli_query($link, $sql);
+        $sql = "insert into portfolios(imagem, titulo, comentario) values (:imagem, :titulo, :comentario)";
+        $stmt = $con->prepare($sql);
 
-        mysqli_close($link);
+        $stmt->bindParam(":imagem", $imagem);
+        $stmt->bindParam(":titulo", $titulo);
+        $stmt->bindParam(":descricao", $comentario);
 
-        if($result)
-            return true; # retorno quando ocorrer sucesso na inserção
+        $status = $stmt->execute();
+        unset($con);
+        unset($stmt);
 
-        return false; # retorno padrão(default)
+        if($status)
+            return true;
+
+        return false;
     }
 
     function listaPortfolios()
     {
-        $link = getConnection();
+        $con = getConnection();
         $sql = "select * from portfolios";
-        $result = mysqli_query($link, $sql);
-        $listaPortfolios = array();
-        while($portfolios = mysqli_fetch_object($result))
-        {
-            array_push($listaPortfolios, $portfolios);
-        }
-        mysqli_close($link);
-        return $listaPortfolios;
+
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        unset($con);
+        unset($stmt);
+        return $result;
     }
 
     function apagarPortfolio($id) 
     {
-        $link = getConnection();
+        $con = getConnection();
 
-        $sql = "delete from portfolios where id = {$id}";
-        
-        $result = mysqli_query($link, $sql);
+        $sql = "delete from portfolios where id = :id";
+        $stmt = $con->prepare($sql);
 
-        mysqli_close($link);
+        $stmt->bindParam(":id", $id);
 
-        if($result)
+        $status = $stmt->execute();
+        unset($con);
+        unset($stmt);
+
+        if($status)
             return true;
 
         return false;
@@ -50,44 +59,52 @@
 
     function localizaPortfolioPeloID($id)
     {
-        $link = getConnection();
+        $con = getConnection();
 
-        $sql = "select * from portfolios where id = {$id}";
+        $sql = "select * from portfolios where id = :id";
 
-        $portfolio = mysqli_fetch_object(mysqli_query($link, $sql));
+        $result = $con->query($sql)->fetch(PDO::FETCH_OBJ);
 
-        mysqli_close($link);
-
-        return $portfolio;
+        unset($con);
+        unset($result);
+        return $result;
     }
 
     function atualizarPortfolios($id, $imagem, $titulo, $comentario)
     {
-        $link = getConnection();
+        $con = getConnection();
 
-        $sql = "update portfolios set imagem = '{$imagem}', titulo = '{$titulo}', comentario = '{$comentario}' where id = {$id}";
+        $sql = "update portfolios set imagem = :imagem, titulo = :titulo, comentario = :comentario where id = :id";
+        $stmt = $con->prepare($sql);
 
-        $result = mysqli_query($link, $sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":imagem", $imagem);
+        $stmt->bindParam(":titulo", $titulo);
+        $stmt->bindParam(":comentario", $comentario);
 
-        mysqli_close($link);
+        $status = $stmt->execute();
+        unset($con);
+        unset($stmt);
 
-        if($result)
+        if($status)
             return true;
 
         return false;
     }
 
+   
     function listaPersona()
     {
-        $link = getConnection();
+        $con = getConnection();
         $sql = "select * from persona";
-        $result = mysqli_query($link, $sql);
-        $listaPersona = array();
-        while($persona = mysqli_fetch_object($result))
-        {
-            array_push($listaPersona, $persona);
-        }
-        mysqli_close($link);
-        return $listaPersona;
+
+       $stmt = $con->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        unset($con);
+        unset($stmt);
+        return $result;
     }
 ?>
