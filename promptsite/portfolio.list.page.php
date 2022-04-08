@@ -23,24 +23,6 @@
         <!-- Navigation-->
         <?php include("header.php");?>
         <!-- Masthead-->
-        <?php foreach (listaPersona() as $masthead): ?>
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="assets/img/<?= $masthead->foto ?>" alt="..." />
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0"><?= $masthead->descricao ?></h1>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0"><?= $masthead->descricao2 ?></p>
-            </div>
-        </header>
-        <?php  endforeach; ?>
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
                 <!-- About Section Heading-->
@@ -81,7 +63,7 @@
                         <th>Gerir</th>
                     </thead>
                     <tbody>
-                        <?php foreach (listaPortfolios() as $portfolios) : ?>
+                        <?php foreach ($_SESSION['portfolio_lista'] as $portfolios) : ?>
                         <tr>
                             <td><?= $portfolios->id ?></td>
                             <td><?= $portfolios->imagem ?></td>
@@ -356,39 +338,7 @@
         </div>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
-        <?php foreach (listaPortfolios() as $indice => $portfolio):?>
-        <div class="portfolio-modal modal fade" id="portfolioModal<?= ($indice + 1) ?>" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"><?= $portfolio->titulo?></h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/<?= $portfolio->imagem ?>" alt="..." />
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4"><?= $portfolio->comentario ?></p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <i class="fas fa-xmark fa-fw"></i>
-                                        Close Window
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endforeach ; ?>
+    
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

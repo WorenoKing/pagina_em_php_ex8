@@ -1,11 +1,11 @@
-<?php 
-    require_once('prompt.crud.php');
+<?php
+    require_once("prompt.crud.php");
 
-    $imagem = $_POST['inputImagem'];
-    $titulo = $_POST['inputTitulo'];
-    $comentario = $_POST['inputComentario'];
+    $imagem = filter_input(INPUT_POST, 'inputImagem', FILTER_SANITIZE_SPECIAL_CHARS);
+    $titulo = filter_input(INPUT_POST, 'inputTitulo', FILTER_SANITIZE_SPECIAL_CHARS);
+    $comentario = filter_input(INPUT_POST, 'inputComentario', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    if(cadastrarPortfolios($imagem, $titulo, $comentario))
+    if(cadastrarPortfolio($imagem, $titulo, $comentario))
     {
         header('Location: index.php');
         exit;
