@@ -11,7 +11,7 @@
 
         $stmt->bindParam(":imagem", $imagem);
         $stmt->bindParam(":titulo", $titulo);
-        $stmt->bindParam(":descricao", $comentario);
+        $stmt->bindParam(":comentario", $comentario);
 
         $status = $stmt->execute();
         unset($con);
